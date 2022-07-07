@@ -1,7 +1,7 @@
 {
-  "name": "manfred-to-europass",
+  "name": "electric",
   "version": "1.0.0",
-  "description": "Work in progress... tool to convert from MAC Json to Europass",
+  "description": "doing electricity-consumption-graph",
   "main": "webpack.config.js",
   "scripts": {
     "start": "run-p -l type-check:watch start:dev",
