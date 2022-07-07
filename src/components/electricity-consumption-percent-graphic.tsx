@@ -4,8 +4,9 @@ import { Datas } from "@/api/api.models";
 interface Props {
   allData: Datas;
 }
-export const Graphics = (props: Props) => {
+export const ElectricityConsumptionPercentGraphic = (props: Props) => {
   const { allData } = props;
+  console.log(allData);
   const { included, data } = allData;
   console.log(included);
   const arrayValues = included[0]?.attributes?.content[0]?.attributes;
@@ -14,7 +15,7 @@ export const Graphics = (props: Props) => {
     return date.getDate();
   });
   const dataSeries = arrayValues?.values.map((arrayValue) =>
-    Math.round(arrayValue.value)
+    Math.round(arrayValue.percentage * 100)
   );
   const config = {
     options: {
@@ -36,14 +37,15 @@ export const Graphics = (props: Props) => {
   return (
     <>
       <h1>
-        En esta Gráfica representamos el consumo de energía {arrayValues?.title}
+        En esta Gráfica representamos el consumo de energía {arrayValues?.title}{" "}
+        en cifras porcentuales
       </h1>
 
       <Chart
         options={config.options}
         series={config.series}
-        type="bar"
-        width={1000}
+        type="radar"
+        width={700}
         height={320}
       />
     </>
